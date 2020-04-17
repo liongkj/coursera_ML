@@ -24,16 +24,12 @@ sigma = zeros(1, size(X, 2));
 %               each feature. 
 %
 % Hint: You might find the 'mean' and 'std' functions useful.
-%       
-
-
-
-
-
-
-
-
-
+%       n = no of features
+    mu = mean(X); % 1 X n vector [mu1 mu2 mu3 mu4....]
+    sigma =std(X); % 1 X n vector [sig1 sig2 sig3 sig4....]
+    m = size(X,1); % no of rows
+    mu_matrix = ones(m,1) * mu;
+    X_norm = (X-mu)./sigma;
 % ============================================================
 
 end

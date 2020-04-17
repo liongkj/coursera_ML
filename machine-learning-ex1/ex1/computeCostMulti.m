@@ -12,10 +12,14 @@ J = 0;
 % ====================== YOUR CODE HERE ======================
 % Instructions: Compute the cost of a particular choice of theta
 %               You should set J to the cost.
-
-
-
-
+% 1st method
+% h = X * theta;
+% error_value = h - y;
+% sum_error_square = sum(error_value.^2);
+% J = 1/(2*m)* sum_error_square;
+    % vectored method
+   h = X*theta - y;
+   J = 1/(2*m)* h' * h;
 
 % =========================================================================
 

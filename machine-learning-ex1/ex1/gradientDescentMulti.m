@@ -17,16 +17,18 @@ for iter = 1:num_iters
     %       of the cost function (computeCostMulti) and gradient here.
     %
 
+    % h = X * theta;
+    % errorvec = h-y;
+    % sum_error = X' * errorvec;
+    % theta_change = alpha * (1/m) * sum_error;
+   
+
+    % Vectorized method
+    h = X*theta - y;
+    theta_change = (alpha/m) * X' * h;
 
 
-
-
-
-
-
-
-
-
+    theta = theta - theta_change;
     % ============================================================
 
     % Save the cost J in every iteration    
