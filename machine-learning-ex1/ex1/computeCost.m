@@ -14,8 +14,8 @@ J = 0;
 %               You should set J to the cost.
 
 % x and y are matrices
-h =   X * theta;
-error = h - y;
+hypothesis =   X * theta;
+error = hypothesis - y;
 
 sum_error_sqr = sum(error.^2);
 
