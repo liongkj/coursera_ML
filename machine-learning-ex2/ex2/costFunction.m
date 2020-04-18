@@ -19,14 +19,16 @@ grad = zeros(size(theta));
 %
 % Note: grad should have the same dimensions as theta
 %
-h = 1 ./(1+exp(-(X*theta)));
+h = sigmoid(X*theta);
 sum_cost =  (-y' * log(h)) - ((1-y)' * log(1-h));
 
 J =  sum_cost / m;
 
+% I was confused about this and kept trying to return the updated theta values . . .
 
+% UPDATE (the above was really helpful, thank you for putting it here) As an additional hint: the instructions say: "[...] the gradient of the cost with respect to the parameters" - you're only asked for a gradient, don't overdo it (see above). The fact that you're not given alpha should be a hint in itself. You don't need it. You won't be iterating neither.
 
-
+grad = (X'* (h-y))/m;
 
 % =============================================================
 
