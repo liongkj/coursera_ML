@@ -19,9 +19,10 @@ grad = zeros(size(theta));
 %
 % Note: grad should have the same dimensions as theta
 %
+h = 1 ./(1+exp(-(X*theta)));
+sum_cost =  (-y' * log(h)) - ((1-y)' * log(1-h));
 
-
-
+J =  sum_cost / m;
 
 
 
