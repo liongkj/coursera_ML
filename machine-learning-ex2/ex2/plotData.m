@@ -11,8 +11,10 @@ figure; hold on;
 %               2D plot, using the option 'k+' for the positive
 %               examples and 'ko' for the negative examples.
 %
+% find() get row number
 pos = find(y == 1);
 neg = find(y==0);
+
 % x(pos,1) => get x vector
 % x(pos,2) => get y vector
 % plot(X,Y) => pair up xy

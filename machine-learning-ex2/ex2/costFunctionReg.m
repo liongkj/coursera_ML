@@ -18,9 +18,15 @@ grad = zeros(size(theta));
 %               derivatives of the cost w.r.t. each parameter in theta
 
 
+theta_others = theta(2:end);
 
+lamb = (lambda / (2*m)) *sum( theta_others.^2) ;
+[cost, gradient] = costFunction(theta,X,y) ;
+J = cost+lamb;
 
-
+% seperate update for feature 0
+grad(1) =gradient(1)*X(1,1);
+grad(2:end) = theta_others-( theta_others* (1-lambda/m) - gradient(2:end));
 
 % =============================================================
 
