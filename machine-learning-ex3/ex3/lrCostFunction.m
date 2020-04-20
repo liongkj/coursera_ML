@@ -34,14 +34,27 @@ grad = zeros(size(theta));
 %           temp = theta; 
 %           temp(1) = 0;   % because we don't add anything for j = 0  
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
-%
+
+% theta_others = theta(2:end);
+%%%%% unvectorized
+% lamb = (lambda / (2*m)) *sum( theta_others.^2) ;
+% [cost, gradient] = costFunction(theta,X,y) ;
+% J = cost+lamb;
+
+%%%% Vectorized
+h = sigmoid(X * theta);
+vector1 = -y' * log(h);
+vector2 =  (1-y)' * log(1-h) ;
+theta(1) = 0; 
+lamb = (lambda / (2*m)) * sum( theta.^2) ;
+J = (1/m * ( vector1 - vector2 )) + lamb;
 
 
-
-
-
-
-
+% seperate update for feature 0
+% grad(1) =gradient(1)*X(:,1); no need cause vector product include summation 
+unreg_gradient =  ( 1 / m) *  X'  * (h - y) ;
+reg_gradient = theta * (lambda/m);
+grad = unreg_gradient + reg_gradient;
 
 
 
