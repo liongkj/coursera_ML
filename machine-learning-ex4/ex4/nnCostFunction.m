@@ -34,10 +34,25 @@ Theta2_grad = zeros(size(Theta2));
 % Instructions: You should complete the code by working through the
 %               following parts.
 %
+
+y_matrix = eye(num_labels)(y,:);
 % Part 1: Feedforward the neural network and return the cost in the
 %         variable J. After implementing Part 1, you can verify that your
 %         cost function computation is correct by verifying the cost
 %         computed in ex4.m
+% a = activated neurons, normally add 1 in front as bias
+% z = something like process of activation
+a1 = [ones(m,1) X];
+z2 = a1 * Theta1';
+a2 = [ones(m,1) sigmoid(z2)];
+z3 = a2 * Theta2';
+a3 = sigmoid(z3);
+J1 = (- y_matrix).*log(a3);
+J2 = (1 - y_matrix).* log( 1 - a3);
+cost_matrix = J1 - J2; %to remove the sum(sum()) syntax, cause sum() returns by row/column only
+sum_of_cost = sum (cost_matrix(:));
+unreg_cost = sum_of_cost / m;
+
 %
 % Part 2: Implement the backpropagation algorithm to compute the gradients
 %         Theta1_grad and Theta2_grad. You should return the partial derivatives of
@@ -54,14 +69,19 @@ Theta2_grad = zeros(size(Theta2));
 %               over the training examples if you are implementing it for the 
 %               first time.
 %
+
+
+
+
 % Part 3: Implement regularization with the cost function and gradients.
 %
 %         Hint: You can implement this around the code for
 %               backpropagation. That is, you can compute the gradients for
 %               the regularization separately and then add them to Theta1_grad
 %               and Theta2_grad from Part 2.
-%
-
+%note: need to remove the bias, which is the first column of each matrix
+reg_cost = sum((Theta1(:,2:end).^2)(:)) + sum((Theta2(:,2:end).^2)(:));
+J = unreg_cost + (lambda/(2*m))*reg_cost;
 
 
 
