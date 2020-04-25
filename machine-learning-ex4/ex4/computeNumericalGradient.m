@@ -12,7 +12,7 @@ function numgrad = computeNumericalGradient(J, theta)
 %        be the (approximately) the partial derivative of J with respect 
 %        to theta(i).)
 %                
-
+% ALSO KNOWN AS GRADIENT DESCIENCE CHECKING, computational expensive
 numgrad = zeros(size(theta));
 perturb = zeros(size(theta));
 e = 1e-4;

@@ -81,7 +81,7 @@ fprintf(['Cost at parameters (loaded from ex4weights): %f '...
          '\n(this value should be about 0.287629)\n'], J);
 
 fprintf('\nProgram paused. Press enter to continue.\n');
-pause;
+
 
 %% =============== Part 4: Implement Regularization ===============
 %  Once your cost function implementation is correct, you should now
@@ -100,7 +100,7 @@ fprintf(['Cost at parameters (loaded from ex4weights): %f '...
          '\n(this value should be about 0.383770)\n'], J);
 
 fprintf('Program paused. Press enter to continue.\n');
-pause;
+
 
 
 %% ================ Part 5: Sigmoid Gradient  ================
@@ -117,7 +117,7 @@ fprintf('%f ', g);
 fprintf('\n\n');
 
 fprintf('Program paused. Press enter to continue.\n');
-pause;
+
 
 
 %% ================ Part 6: Initializing Pameters ================
@@ -147,7 +147,7 @@ fprintf('\nChecking Backpropagation... \n');
 checkNNGradients;
 
 fprintf('\nProgram paused. Press enter to continue.\n');
-pause;
+
 
 
 %% =============== Part 8: Implement Regularization ===============
@@ -169,7 +169,7 @@ fprintf(['\n\nCost at (fixed) debugging parameters (w/ lambda = %f): %f ' ...
          '\n(for lambda = 3, this value should be about 0.576051)\n\n'], lambda, debug_J);
 
 fprintf('Program paused. Press enter to continue.\n');
-pause;
+
 
 
 %% =================== Part 8: Training NN ===================
@@ -209,6 +209,7 @@ fprintf('Program paused. Press enter to continue.\n');
 pause;
 
 
+
 %% ================= Part 9: Visualize Weights =================
 %  You can now "visualize" what the neural network is learning by 
 %  displaying the hidden units to see what features they are capturing in 
@@ -230,5 +231,3 @@ pause;
 pred = predict(Theta1, Theta2, X);
 
 fprintf('\nTraining Set Accuracy: %f\n', mean(double(pred == y)) * 100);
-
-

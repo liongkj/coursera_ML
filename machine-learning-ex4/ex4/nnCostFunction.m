@@ -29,12 +29,9 @@ m = size(X, 1);
 J = 0;
 Theta1_grad = zeros(size(Theta1));
 Theta2_grad = zeros(size(Theta2));
-
 % ====================== YOUR CODE HERE ======================
 % Instructions: You should complete the code by working through the
 %               following parts.
-%
-
 y_matrix = eye(num_labels)(y,:);
 % Part 1: Feedforward the neural network and return the cost in the
 %         variable J. After implementing Part 1, you can verify that your
@@ -69,10 +66,18 @@ unreg_cost = sum_of_cost / m;
 %               over the training examples if you are implementing it for the 
 %               first time.
 %
+    
+    % hidden layer 2
+    delta_3 = a3 - y_matrix;
+    Theta2_grad = Theta2_grad +  (delta_3' * a2 );
+    % hidden layer 1
+    delta2_1 = delta_3 * Theta2(:,2:end);
+    delta_2 =  delta2_1 .* sigmoidGradient(z2);
+    Theta1_grad = Theta1_grad  + (delta_2' * a1);
 
 
-
-
+    unreg_Theta1_grad = Theta1_grad  / m;
+    unreg_Theta2_grad = Theta2_grad / m;
 % Part 3: Implement regularization with the cost function and gradients.
 %
 %         Hint: You can implement this around the code for
@@ -80,23 +85,18 @@ unreg_cost = sum_of_cost / m;
 %               the regularization separately and then add them to Theta1_grad
 %               and Theta2_grad from Part 2.
 %note: need to remove the bias, which is the first column of each matrix
-reg_cost = sum((Theta1(:,2:end).^2)(:)) + sum((Theta2(:,2:end).^2)(:));
-J = unreg_cost + (lambda/(2*m))*reg_cost;
+    reg_cost = sum((Theta1(:,2:end).^2)(:)) + sum((Theta2(:,2:end).^2)(:));
+
+    reg_grad1 = (lambda/m)*Theta1;
+    reg_grad2 = (lambda/m)*Theta2;
+    reg_grad1(:,1) = 0;
+    reg_grad1(:,1);
+    reg_grad2(:,1) = 0;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    Theta1_grad = unreg_Theta1_grad + reg_grad1;
+    Theta2_grad = unreg_Theta2_grad + reg_grad2;
+    J = unreg_cost + (lambda/(2*m))*reg_cost;
 
 
 
