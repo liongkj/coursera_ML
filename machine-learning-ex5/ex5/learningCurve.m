@@ -19,6 +19,7 @@ m = size(X, 1);
 
 % You need to return these values correctly
 error_train = zeros(m, 1);
+
 error_val   = zeros(m, 1);
 
 % ====================== YOUR CODE HERE ======================
@@ -52,12 +53,14 @@ error_val   = zeros(m, 1);
 %
 
 % ---------------------- Sample Solution ----------------------
-
-
-
-
-
-
+for n = 1:m
+    [theta] = trainLinearReg(X(1:n,:), y(1:n), lambda);
+    %without regularization, means lamba should be always zero here
+    [err,grad] = linearRegCostFunction(X(1:n,:), y(1:n), theta, 0);
+    error_train(n) = err;
+    [err2,grad] = linearRegCostFunction(Xval, yval, theta, 0);
+    error_val(n) = err2;
+end
 
 % -------------------------------------------------------------
 

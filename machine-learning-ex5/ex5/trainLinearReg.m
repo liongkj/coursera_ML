@@ -16,6 +16,8 @@ costFunction = @(t) linearRegCostFunction(X, y, t, lambda);
 options = optimset('MaxIter', 200, 'GradObj', 'on');
 
 % Minimize using fmincg
+warning("off", "Octave:divide-by-zero");
 theta = fmincg(costFunction, initial_theta, options);
+warning("on", "Octave:divide-by-zero");
 
 end
