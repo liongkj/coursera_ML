@@ -25,7 +25,7 @@ errors = zeros(size(Xval,1));
 % [model] = svmTrain(X, y, C,@(x1, x2) gaussianKernel(x1, x2, sigma));
 % predictions = svmPredict(model,Xval);
 % error = mean(double(predictions ~= yval));
-model = svmtrain( y, X,cstrcat("-t 0 -c ",num2str(C) ));
+model = svmtrain( y, X,strcat("-t 0 -c ",num2str(C) ));
 [p] = svmpredict( yval,Xval, model);
 
 
