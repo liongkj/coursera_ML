@@ -15,7 +15,9 @@ sim = 0;
 %               sigma
 %
 %
-
+g1 = sum((x1 - x2).^2);
+variance = 2 * sigma ^ 2;
+sim = exp(-g1/variance);
 
 
 
