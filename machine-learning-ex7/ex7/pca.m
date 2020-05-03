@@ -19,7 +19,11 @@ S = zeros(n);
 % Note: When computing the covariance matrix, remember to divide by m (the
 %       number of examples).
 %
-
+% Where Sigma is the covariance matrix. The output values U and V are unitary matrices and the columns of U are the eigenvectors of the transformation. S is a diagonal matrix, containing the corresponding eigenvalues in decreasing order. In order words, the SVD has done the work to figure out which dimensions are the most significant and gives us the results in that order. 
+Sigma = 1/m * (X') * X;
+% U = pricipal components
+% S = diagonal matrix
+[U,S,V] = svd(Sigma);
 
 
 
