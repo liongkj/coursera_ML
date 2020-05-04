@@ -39,8 +39,37 @@ Theta_grad = zeros(size(Theta));
 %        Theta_grad - num_users x num_features matrix, containing the 
 %                     partial derivatives w.r.t. to each element of Theta
 %
+unreg_cost = (1/2) * sum((( ((X * Theta') - Y).^2 ) .* R),'all');
+reg_cost = (lambda /2 ) *( sum((Theta.^2),'all') + sum((X.^2),'all'));
+J = unreg_cost + reg_cost;
 
+unreg_X_grad = (((X * Theta') - Y).* R) * Theta;
+reg_X_grad = lambda * X;
+X_grad = unreg_X_grad + reg_X_grad;
 
+unreg_Theta_grad = (((X * Theta') - Y).* R)' * X;
+reg_Theta_grad = lambda * Theta;
+Theta_grad = unreg_Theta_grad + reg_Theta_grad;
+
+% Calculate the regularized cost:
+
+% - Using the formula on the top of Page 13 of ex8.pdf, compute the regularization term as the scaled sum of the squares of all terms in Theta and X. The result should be a scalar. Note that for Recommender Systems there are no bias terms, so regularization should include all columns of X and Theta.
+
+% - Add the regularized and un-regularized cost terms.
+
+% - Test your code, then submit this portion.
+
+% Calculate the gradient regularization terms (ref: the formulas in the middle of Page 13 of ex8.pdf)
+
+% - The X gradient regularization is the X matrix scaled by lambda.
+
+% - The Theta gradient regularization is the Theta matrix scaled by lambda.
+
+% - Add the regularization terms to their unregularized values.
+
+% - Test your code, then submit this portion.
+
+% Done.
 
 
 
